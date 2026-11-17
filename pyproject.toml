@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "casemem-medvqa"
+version = "0.1.0"
+description = "Visual memory guided region selection and localization-aware GRPO for MedVQA"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = ["numpy>=1.24", "Pillow>=10"]
+[project.optional-dependencies]
+data = ["pyarrow>=19,<24", "datasets>=3.5,<5"]
+models = ["transformers>=4.57,<5", "open-clip-torch>=2.32,<4", "sentence-transformers>=3.4,<6", "openai>=1.65,<3"]
+[project.scripts]
+casemem = "casemem.cli:main"
+[tool.setuptools.packages.find]
+include = ["casemem*"]

@@ -1,0 +1,48 @@
+{
+  "models": {
+    "backbone": "Qwen/Qwen3-VL-8B-Instruct",
+    "teacher": "qwen3.5-flash",
+    "text_encoder": "BAAI/bge-m3",
+    "visual_encoder": "microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    "detector": "IDEA-Research/grounding-dino-base"
+  },
+  "memory": {
+    "merge_threshold": 0.9,
+    "max_teacher_regions": 3,
+    "detector_box_threshold": 0.25,
+    "detector_text_threshold": 0.25,
+    "guide_descriptions": 4
+  },
+  "retrieval": {
+    "text_top_k": 5,
+    "visual_top_k": 3,
+    "alpha": 0.5,
+    "grid_size": 512,
+    "patch_size": 128,
+    "stride": 64,
+    "sigma": 0.2,
+    "spatial_weight": 0.5,
+    "score_threshold": 1.2,
+    "align_threshold": 0.8,
+    "cosine_threshold": 0.7,
+    "epsilon": 1e-08
+  },
+  "scoring": {
+    "open_metric": "exact",
+    "open_correct_threshold": 1.0
+  },
+  "training": {
+    "steps": 200,
+    "queries_per_batch": 16,
+    "rollouts_per_query": 8,
+    "localization_weight": 0.2,
+    "learning_rate": 1e-06,
+    "prompt_tokens": 4096,
+    "response_tokens": 2048
+  },
+  "inference": {
+    "batch_size": 64,
+    "max_sequence_tokens": 2048,
+    "max_new_tokens": 512
+  }
+}
